@@ -1,5 +1,5 @@
 module.exports = {
-    HOST: 'localhost',
+    HOST: "localhost",
     USER: "root",
     PASSWORD: "maffmann",
     DB: "mentel_DB",

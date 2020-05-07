@@ -1,6 +1,6 @@
 {
   "name": "server",
-  "description": "Node.js REST API with express, mysql and sequelize",
+  "description": "SDG Goal 3 01, An application that connects patients with mental health practitioners",
   "version": "0.0.0",
   "private": true,
   "main": "server.js",

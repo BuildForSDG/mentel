@@ -1,7 +1,7 @@
 // creating a db to test server
 // you can change the fields based on user info
 module.exports = (sequelize, Sequelize) => {
-    const User = sequelize.define('user', {
+    const User = sequelize.define("user", {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true
