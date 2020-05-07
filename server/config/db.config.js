@@ -1,13 +1,14 @@
+require("dotenv").config();
 module.exports = {
-    HOST: "localhost",
-    USER: "root",
-    PASSWORD: "maffmann",
-    DB: "mentel_DB",
-    dialect: "mysql",
+    HOST: process.env.DB_HOST,
+    USER: process.env.DB_USER,
+    PASSWORD: process.env.DB_PASS,
+    DB: process.env.DB_NAME,
+    dialect: process.env.DB_DIALECT,
     pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
+        max: Number(process.env.DB_POOL_MAX),
+        min: Number(process.env.DB_POOL_MIN),
+        acquire: Number(process.env.DB_POOL_ACQUIRE),
+        idle: Number(process.env.DB_POOL_IDLE)
     }
 };
