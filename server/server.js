@@ -23,10 +23,11 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Mentel Api. Please read the docs for its usage.. 🔥" });
 });
 
-app.use('/api/v1/users', userRoute);
+app.use("/api/v1/users", userRoute);
 
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
+    // eslint-disable-next-line no-console
     console.log(`Server running on port ${port} 🔥`);
 });

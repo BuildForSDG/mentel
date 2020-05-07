@@ -6,7 +6,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER,
             primaryKey: true
         },
-        last_name: {
+        lastName: {
             type: Sequelize.STRING
         },
         email: {
@@ -15,7 +15,7 @@ module.exports = (sequelize, Sequelize) => {
         password: {
             type: Sequelize.STRING
         }
-    })
+    });
 
     return User;
-}
+};
