@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Profile = sequelize.define("profile", {
+  const Profile = sequelize.define("Profile", {
     image: {
       type: DataTypes.STRING,
     },
@@ -8,5 +8,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
+
+  Profile.associate = (models) => {
+    Profile.belongsTo(models.Clients, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
   return Profile;
 };
