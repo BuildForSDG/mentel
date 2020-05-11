@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Health = sequelize.define("healthprofessional", {
+  const Health = sequelize.define('Healthprofessionals', {
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -35,8 +35,8 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Health.associate = (models) => {
-    Health.hasMany(models.Appointment, {
-      onDelete: "cascade",
+    Health.hasMany(models.Appointments, {
+      onDelete: 'cascade',
     });
   };
 

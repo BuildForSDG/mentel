@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import cors from 'cors';
 import helmet from 'helmet';
-import db from './models';
+// import db from './models';
 
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
@@ -23,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+require('dotenv').config();
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -43,12 +44,12 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-const PORT = process.env.PORT || 500;
+const PORT = process.env.PORT || 5000;
 
-db.sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server listening at: http://localhost:${PORT}`);
-  });
+// db.sequelize.sync().then(() => {
+// });
+app.listen(PORT, () => {
+  console.log(`Server listening at: http://localhost:${PORT}`);
 });
 
 module.exports = app;

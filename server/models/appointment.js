@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Appointment = sequelize.define("Appointment", {
+  const Appointment = sequelize.define('Appointments', {
     message: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     });
-    Appointment.belongsTo(models.healthprofessional, {
+    Appointment.belongsTo(models.Healthprofessionals, {
       foreignKey: {
         allowNull: false,
       },
