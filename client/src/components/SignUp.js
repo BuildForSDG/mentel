@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
@@ -6,12 +6,12 @@ import { withRouter } from "react-router-dom";
 class SignUp extends Component {
     
 
-    onChange = e => {this.setState({
+    onChange = (e) => {this.setState({
         [e.target.name] : e.target.value
     });
 }
 
-    handleSubmit = e => {
+    handleSubmit = (e) => {
         e.preventDefault();
         this.props.history.push("/");
     }
