@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 const PatientsConnect = () => {
     return (
@@ -19,7 +19,7 @@ const PatientsConnect = () => {
                 </div>
             </section>
         </div>
-    )
-}
+    );
+};
 
 export default PatientsConnect;

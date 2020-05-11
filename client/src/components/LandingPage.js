@@ -1,7 +1,7 @@
-import React, { Component } from "react"
-import NavBar from "./NavBar"
-import PatientsConnect from "./PatientsConnect"
-import FooterPage from "./FooterPage"
+import React, { Component } from "react";
+import NavBar from "./NavBar";
+import PatientsConnect from "./PatientsConnect";
+import FooterPage from "./FooterPage";
 
  class LandingPage extends Component {
     render() {
@@ -47,7 +47,7 @@ import FooterPage from "./FooterPage"
 
                 <FooterPage />
             </div>
-        )
+        );
     }
 }
 

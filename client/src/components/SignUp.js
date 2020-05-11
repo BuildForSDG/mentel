@@ -6,13 +6,14 @@ import { withRouter } from "react-router-dom";
 class SignUp extends Component {
     
 
-    onChange = e => this.setState({
+    onChange = e => {this.setState({
         [e.target.name] : e.target.value
     });
+}
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.history.push('/')
+        this.props.history.push("/");
     }
 
     render() {
@@ -63,7 +64,7 @@ class SignUp extends Component {
 </div>
 </div>
             
-        )
+        );
     }
 }
 

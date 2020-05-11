@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
  const FooterPage =() => {
     return (
@@ -12,7 +12,7 @@ import React from 'react'
           </footer>
 
         </div>
-    )
+    );
 }
 
 

@@ -1,20 +1,20 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Login.css";
 
  class Login extends Component  {
 
-    handleChange = (e) =>{
+    handleChange = (e) => {
         this.setState({
             [e.target.id]: e.target.value
-        })
+        });
      
       }
 
-    handleSubmit = (e) =>{
+    handleSubmit = (e) => {
         e.preventDefault();
-        this.props.history.push('/')
+        this.props.history.push("/");
     }
     
      render () { 
@@ -56,7 +56,7 @@ import "./Login.css";
            <div className="center-align blue-text">New user? Sign up <Link to="/signup" className="red-text">here</Link></div>
            </div>
             </div>
-        )
+        );
 
      }
 

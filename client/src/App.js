@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import LandingPage from "./components/LandingPage";
 import Login from "./components/Login/Login";
-import { BrowserRouter, Switch, Route} from "react-router-dom"
+import { BrowserRouter, Switch, Route} from "react-router-dom";
 import SignUp from "./components/SignUp";
 
 
