@@ -10,7 +10,7 @@ const signupValidation = (data) => {
       .max(100)
       .required()
       .regex(/^[0-9]{7,15}$/),
-    phone_number: Joi.string().min(15).required(),
+    phoneNumber: Joi.string().min(11).required(),
     address: Joi.string().trim().max(350),
     isAdmin: Joi.number().integer().max(1),
   };

@@ -1,8 +1,8 @@
 import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-const models = require('../models');
-const signupValidation = require('../validation/userSignup');
+import model from '../models';
+import signupValidation from '../validation/userSignup';
 
 /** /register:
    post:
@@ -16,7 +16,7 @@ const signUp = async (req, res) => {
     if (error) {
       return res.status(400).send(error.details[0].message);
     }
-    const clientData = await models.Clients.create({
+    const clientData = await model.Clients.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
@@ -25,7 +25,7 @@ const signUp = async (req, res) => {
       address: req.body.address,
       isAdmin: req.body.isAdmin,
     });
-    await models.Clients.findOne({
+    await model.Clients.findOne({
       where: {
         email: req.body.email,
       },
@@ -60,4 +60,4 @@ const signUp = async (req, res) => {
   }
 };
 
-module.exports = signUp;
+export default signUp;

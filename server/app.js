@@ -5,10 +5,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import cors from 'cors';
 import helmet from 'helmet';
-// import db from './models';
-
-// import indexRouter from './routes/index';
-// import usersRouter from './routes/users';
+import signUp from './controllers/userSignUp';
 
 const app = express();
 
@@ -24,10 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 require('dotenv').config();
-const signUp = require('./controllers/userSignUp');
 
-// app.use('/', indexRouter);
-// app.use('/users', usersRouter);
 app.post('/api/signup', signUp);
 
 // catch 404 and forward to error handler
@@ -48,10 +42,8 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 
-// db.sequelize.sync().then(() => {
-// });
 app.listen(PORT, () => {
   console.log(`Server listening at: http://localhost:${PORT}`);
 });
 
-module.exports = app;
+export default app;
