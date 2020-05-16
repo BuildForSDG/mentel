@@ -2,6 +2,7 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 const models = require('../models');
+const signupValidation = require('../validation/userSignup');
 
 /** /register:
    post:
@@ -11,6 +12,10 @@ const models = require('../models');
 */
 const signUp = async (req, res) => {
   try {
+    const { error } = signupValidation(req.body);
+    if (error) {
+      return res.status(400).send(error.details[0].message);
+    }
     const clientData = await models.Clients.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
