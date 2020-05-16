@@ -7,8 +7,8 @@ import cors from 'cors';
 import helmet from 'helmet';
 // import db from './models';
 
-import indexRouter from './routes/index';
-import usersRouter from './routes/users';
+// import indexRouter from './routes/index';
+// import usersRouter from './routes/users';
 
 const app = express();
 
@@ -24,9 +24,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 require('dotenv').config();
+const signUp = require('./controllers/userSignUp');
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// app.use('/', indexRouter);
+// app.use('/users', usersRouter);
+app.post('/api/signup', signUp);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
