@@ -30,30 +30,25 @@ const signUp = async (req, res) => {
         email: req.body.email,
       },
     });
-    if (!clientData) {
-      res.send({
-        message: 'client not found',
-      });
-    } else {
-      const token = jwt.sign({ clientData }, process.env.TOKEN_SECRET, {
-        expiresIn: 86400, // 24 hours
-      });
-      const data = {
-        id: clientData.id,
-        firstName: clientData.firstName,
-        lastName: clientData.lastName,
-        email: clientData.email,
-        phoneNumber: clientData.phoneNumber,
-        address: clientData.address,
-        isAdmin: clientData.isAdmin,
-      };
-      data.token = token;
-      res.cookie('token', token);
-      res.header('Authorization', token).status(200).send({
-        data,
-        message: 'Client was registered successfully!',
-      });
-    }
+
+    const token = jwt.sign({ clientData }, process.env.TOKEN_SECRET, {
+      expiresIn: 86400, // 24 hours
+    });
+    const data = {
+      id: clientData.id,
+      firstName: clientData.firstName,
+      lastName: clientData.lastName,
+      email: clientData.email,
+      phoneNumber: clientData.phoneNumber,
+      address: clientData.address,
+      isAdmin: clientData.isAdmin,
+    };
+    data.token = token;
+    res.cookie('token', token);
+    res.header('Authorization', token).status(200).send({
+      data,
+      message: 'Client was registered successfully!',
+    });
   } catch (err) {
     res.status(err.status || 500);
     res.render('error');
