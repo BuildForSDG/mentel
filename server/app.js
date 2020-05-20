@@ -6,6 +6,7 @@ import logger from 'morgan';
 import cors from 'cors';
 import helmet from 'helmet';
 import signUp from './controllers/userSignUp';
+import signIn from './controllers/userSignin';
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 require('dotenv').config();
 
 app.post('/api/signup', signUp);
+app.post('/api/signin', signIn);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
