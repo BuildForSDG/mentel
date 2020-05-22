@@ -30,8 +30,13 @@ app.post('/api/signin', signIn);
 app.post('/forgetPassword', forgetPassword);
 app.post('/resetpasstoken/:id-:token', resetPassword);
 
+
+app.get("/", (req, res) => {
+  res.send("Welcome to Mentel API")
+});
+
 // catch 404 and forward to error handler
-app.use((req, res, next) => {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
