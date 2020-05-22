@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "babel-node ./server/app.js",
+    "start": "npm run build && node ./server/app.js",
     "dev": "nodemon --exec babel-node ./server/app.js",
     "lint": "eslint server/  --fix",
     "clean": "rm -rf build && mkdir build",
-    "build-babel": "babel ./server --out-dir ./build",
+    "build-babel": "babel -d ./server --out-dir ./build",
     "build": "npm run clean && npm run build-babel",
     "startScript": "npm run build && node ./build/app.js",
     "test": " cross-env NODE_ENV=test nyc --reporter=text --reporter=html mocha --require @babel/register src/test --timeout 10000 --exit",
