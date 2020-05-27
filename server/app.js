@@ -9,6 +9,7 @@ import signUp from './controllers/userSignUp';
 import signIn from './controllers/userSignin';
 import forgetPassword from './controllers/forgetPassword';
 import resetPassword from './controllers/resetPassword';
+import healthRoute from './routes/health';
 
 const app = express();
 
@@ -25,10 +26,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 require('dotenv').config();
 
+// app.use('/uploads', express.static('uploads'));
 app.post('/api/signup', signUp);
 app.post('/api/signin', signIn);
 app.post('/forgetPassword', forgetPassword);
 app.post('/resetpasstoken/:id-:token', resetPassword);
+app.use('/api', healthRoute);
 
 app.get('/', (req, res) => {
   res.send('Welcome to Mentel API');
