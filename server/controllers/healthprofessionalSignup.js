@@ -44,7 +44,7 @@ export default {
           address: req.body.address,
         });
         const token = jwt.sign({ Data }, process.env.TOKEN_SECRET, {
-          expiresIn: 86400, // 24 hours
+          expiresIn: 86400,
         });
         const data = {
           id: Data.id,
