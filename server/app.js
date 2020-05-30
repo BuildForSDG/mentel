@@ -9,8 +9,9 @@ import signUp from './controllers/userSignUp';
 import signIn from './controllers/userSignin';
 import forgetPassword from './controllers/forgetPassword';
 import resetPassword from './controllers/resetPassword';
-import healthRegister from './controllers/healthprofessionalSignup';
-import upload from './middlewares/multer';
+// import healthRegister from './controllers/healthprofessionalSignup';
+// import upload from './middlewares/multer';
+import healthRegister from './routes/health';
 
 const app = express();
 
@@ -32,7 +33,8 @@ app.post('/api/signup', signUp);
 app.post('/api/signin', signIn);
 app.post('/forgetPassword', forgetPassword);
 app.post('/resetpasstoken/:id-:token', resetPassword);
-app.post('/api/register', upload.single('image'), healthRegister);
+app.use('/api', healthRegister);
+// app.post('/api/register', upload.single('image'), healthRegister);
 
 app.get('/', (req, res) => {
   res.send('Welcome to Mentel API');
