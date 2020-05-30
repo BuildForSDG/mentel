@@ -11,33 +11,46 @@ module.exports = {
 
       Example:
       */
-    return queryInterface.createTable('Appointments', {
+    return queryInterface.createTable('Profiles', {
       id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
       },
-      message: {
-        type: Sequelize.STRING,
+      image: {
+        type: Sequelize.DataTypes.STRING,
+        allowNull: false,
+      },
+      userName: {
+        type: Sequelize.DataTypes.STRING,
         allowNull: false,
       },
       createdAt: {
-        type: Sequelize.DATE,
+        type: Sequelize.DataTypes.DATE,
         allowNull: false,
       },
       updatedAt: {
-        type: Sequelize.DATE,
+        type: Sequelize.DataTypes.DATE,
         allowNull: false,
       },
       ClientId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         onDelete: 'CASCADE',
         allowNull: false,
         references: {
           model: 'Clients',
-          key: 'id',
         },
+        key: 'id',
       },
+      // HealthprofessionalId: {
+      //   type: Sequelize.DataTypes.INTEGER,
+      //   onDelete: 'CASCADE',
+      //   allowNull: false,
+      //   references: {
+      //     model: 'Healthprofessionals',
+      //     key: 'id',
+      //   },
+      // },
     });
   },
 
@@ -48,6 +61,6 @@ module.exports = {
 
       Example:
       */
-    return queryInterface.dropTable('Appointments');
+    return queryInterface.dropTable('Profiles');
   },
 };
