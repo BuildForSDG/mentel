@@ -44,9 +44,6 @@ export default class DashboardPage extends Component {
                         <MDBNavbarToggler onClick={this.toggleCollapse} />
                         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
                             <MDBNavbarNav left>
-                                <MDBNavItem active>
-                                    <MDBNavLink to="#!">Home</MDBNavLink>
-                                </MDBNavItem>
                             </MDBNavbarNav>
                             <MDBNavbarNav right>
                                 <MDBNavItem>
@@ -310,6 +307,33 @@ export default class DashboardPage extends Component {
                                                 <td>Dr Sadiq</td>
                                                 <td>01/01/2020</td>
                                                 <td><MDBBtn color="info">Mark as Complete</MDBBtn></td>
+                                            </tr>
+                                        </MDBTableBody>
+                                    </MDBTable>
+                                </MDBContainer>
+
+                            </MDBCard>
+
+                            <MDBCard>
+                                <MDBContainer>
+                                    <h4 className="my-4">Previous Appointments</h4>
+                                    <MDBTable bordered striped>
+                                        <MDBTableHead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Assigned To</th>
+                                                <th>Date</th>
+                                            </tr>
+                                        </MDBTableHead>
+                                        <MDBTableBody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Anxiety Issue</td>
+                                                <td>I just want someone to listen to me</td>
+                                                <td>Dr Sadiq</td>
+                                                <td>01/01/2020</td>
                                             </tr>
                                         </MDBTableBody>
                                     </MDBTable>
