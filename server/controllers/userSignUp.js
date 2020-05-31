@@ -50,8 +50,7 @@ const signUp = async (req, res) => {
       message: 'Client was registered successfully!',
     });
   } catch (err) {
-    res.status(err.status || 500);
-    res.render('error');
+    res.status(500).send({ message: err.message });
   }
 };
 
