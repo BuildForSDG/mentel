@@ -10,6 +10,7 @@ import signIn from './controllers/userSignin';
 import forgetPassword from './controllers/forgetPassword';
 import resetPassword from './controllers/resetPassword';
 import healthRegister from './routes/health';
+require('dotenv').config();
 
 const app = express();
 
@@ -24,7 +25,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-require('dotenv').config();
 
 app.use('/uploads', express.static('uploads'));
 app.post('/api/signup', signUp);
