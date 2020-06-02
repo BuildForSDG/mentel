@@ -10,7 +10,6 @@ import signIn from './controllers/userSignin';
 import forgetPassword from './controllers/forgetPassword';
 import resetPassword from './controllers/resetPassword';
 import healthRegister from './routes/health';
-import getAllHealth from './routes/getAllHealth';
 
 const app = express();
 
@@ -34,7 +33,6 @@ app.post('/forgetPassword', forgetPassword);
 app.post('/resetpasstoken/:id-:token', resetPassword);
 
 app.use('/api', healthRegister);
-app.use('/api', getAllHealth);
 
 app.get('/', (req, res) => {
   res.send('Welcome to Mentel API');
