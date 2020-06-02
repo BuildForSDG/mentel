@@ -4,15 +4,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    Healthprofessional: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   });
 
   Appointment.associate = (models) => {
     Appointment.belongsTo(models.Clients, {
-      foreignKey: {
-        allowNull: false,
-      },
-    });
-    Appointment.belongsTo(models.Healthprofessionals, {
       foreignKey: {
         allowNull: false,
       },
