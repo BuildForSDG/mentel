@@ -10,6 +10,8 @@ import signIn from './controllers/userSignin';
 import forgetPassword from './controllers/forgetPassword';
 import resetPassword from './controllers/resetPassword';
 import healthRegister from './routes/health';
+import appointRoute from './routes/appointment';
+import feedRoute from './routes/feed';
 require('dotenv').config();
 
 const app = express();
@@ -33,6 +35,8 @@ app.post('/forgetPassword', forgetPassword);
 app.post('/resetpasstoken/:id-:token', resetPassword);
 
 app.use('/api', healthRegister);
+app.use('/api', appointRoute);
+app.use('/api', feedRoute);
 
 app.get('/', (req, res) => {
   res.send('Welcome to Mentel API');
