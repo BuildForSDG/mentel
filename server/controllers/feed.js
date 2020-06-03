@@ -1,7 +1,6 @@
 import model from '../models';
 
 export default {
-  // eslint-disable-next-line consistent-return
   postfeed: async (req, res) => {
     try {
       const feeds = await model.Feeds.create({
