@@ -8,6 +8,7 @@ export default {
         ClientId: req.user.client.id,
       });
       res.send({
+        feeds,
         message: 'your feed post was successful',
       });
     } catch (err) {
