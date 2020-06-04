@@ -148,32 +148,39 @@ export default class Admin extends Component {
                                                         <MDBCardBody>
                                                             <MDBContainer>
                                                                 <h4 className="my-4">Health Professionals</h4>
-                                                                <div className="table-responsive">
-                                                                    <MDBTable bordered striped>
-                                                                        <MDBTableHead>
-                                                                            <tr>
-                                                                                <th>#</th>
-                                                                                <th>Name</th>
-                                                                                <th>Health ID</th>
-                                                                                <th>Number</th>
-                                                                                <th>Action</th>
-                                                                            </tr>
-                                                                        </MDBTableHead>
-                                                                        <MDBTableBody>
-                                                                            {healthP.map((obj, i) => {
-                                                                                return <tr key={obj.id}>
-                                                                                    <td>{i + 1}</td>
-                                                                                    <td>{obj.firstName} {obj.lastName}</td>
-                                                                                    <td>{obj.medicalId}</td>
-                                                                                    <td>{obj.phoneNumber}</td>
-                                                                                    <td>
-                                                                                        <MDBBtn color="danger">Delete</MDBBtn>
-                                                                                    </td>
+
+                                                                {healthP ?
+                                                                    <div className="table-responsive">
+                                                                        <MDBTable bordered striped>
+                                                                            <MDBTableHead>
+                                                                                <tr>
+                                                                                    <th>#</th>
+                                                                                    <th>Name</th>
+                                                                                    <th>Health ID</th>
+                                                                                    <th>Number</th>
+                                                                                    <th>Action</th>
                                                                                 </tr>
-                                                                            })}
-                                                                        </MDBTableBody>
-                                                                    </MDBTable>
-                                                                </div>
+                                                                            </MDBTableHead>
+                                                                            <MDBTableBody>
+                                                                                {healthP.map((obj, i) => {
+                                                                                    return <tr key={obj.id}>
+                                                                                        <td>{i + 1}</td>
+                                                                                        <td>{obj.firstName} {obj.lastName}</td>
+                                                                                        <td>{obj.medicalId}</td>
+                                                                                        <td>{obj.phoneNumber}</td>
+                                                                                        <td>
+                                                                                            <MDBBtn color="danger">Delete</MDBBtn>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                })}
+                                                                            </MDBTableBody>
+                                                                        </MDBTable>
+                                                                    </div>
+                                                                    :
+                                                                    <h6 className="text-muted">No Health Professionals Registered</h6>
+                                                                }
+
+
                                                             </MDBContainer>
                                                         </MDBCardBody>
                                                     </MDBCard>
