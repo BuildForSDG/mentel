@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+
 import {
     MDBContainer,
     MDBCol,
@@ -7,14 +8,10 @@ import {
     MDBCard,
     MDBCardBody,
     MDBCollapseHeader,
-    MDBCardImage,
     MDBRow,
-    MDBView,
     MDBCardTitle,
     MDBCardText,
     MDBCardUp,
-    MDBAvatar,
-    MDBIcon,
     MDBTable,
     MDBTableHead,
     MDBTableBody,
@@ -25,7 +22,8 @@ import Footer from '../FooterPage';
 
 export default class Admin extends Component {
     state = {
-        collapseID: 'collapse1'
+        collapseID: 'collapse1',
+        healthProfessionals: [],
     };
 
     toggleCollapse = collapseID => () =>
@@ -41,7 +39,6 @@ export default class Admin extends Component {
     "white-text" = {
         color: "white"
     }
-
 
 
     render() {
@@ -111,7 +108,7 @@ export default class Admin extends Component {
                                                                             <td>1</td>
                                                                             <td>Jane Doe</td>
                                                                             <td>07038334703</td>
-                                                                            <td>    
+                                                                            <td>
                                                                                 <MDBBtn color="danger">Delete</MDBBtn>
                                                                             </td>
                                                                         </tr>
@@ -125,7 +122,7 @@ export default class Admin extends Component {
                                                     <MDBCard testimonial>
                                                         <MDBCardUp gradient='aqua' />
                                                         <MDBCardBody>
-                                                        <MDBContainer>
+                                                            <MDBContainer>
                                                                 <h4 className="my-4">Health Professionals</h4>
                                                                 <MDBTable bordered striped>
                                                                     <MDBTableHead>
@@ -143,7 +140,7 @@ export default class Admin extends Component {
                                                                             <td>Dr Sadiq</td>
                                                                             <td>0123456</td>
                                                                             <td>07038334703</td>
-                                                                            <td>    
+                                                                            <td>
                                                                                 <MDBBtn color="danger">Delete</MDBBtn>
                                                                             </td>
                                                                         </tr>
@@ -171,10 +168,10 @@ export default class Admin extends Component {
                                         <MDBCardBody>
                                             <MDBRow className='my-4'>
                                                 <MDBCol md='12'>
-                                                <MDBCard testimonial>
+                                                    <MDBCard testimonial>
                                                         <MDBCardUp gradient='aqua' />
                                                         <MDBCardBody>
-                                                        <MDBContainer>
+                                                            <MDBContainer>
                                                                 <h4 className="my-4">Health Professionals</h4>
                                                                 <MDBTable bordered striped>
                                                                     <MDBTableHead>
