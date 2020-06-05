@@ -8,7 +8,6 @@ module.exports = {
     'no-unused-vars': 0,
     'max-len': 0,
     'linebreak-style': 0,
-    'operator-linebreak': 0,
   },
   env: {
     browser: true,
