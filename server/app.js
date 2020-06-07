@@ -12,6 +12,8 @@ import resetPassword from './controllers/resetPassword';
 import healthRegister from './routes/health';
 import appointRoute from './routes/appointment';
 import feedRoute from './routes/feed';
+import deleteUser from './controllers/deleteUser';
+import deleteAllUsers from './controllers/deleteAllUser';
 require('dotenv').config();
 
 const app = express();
@@ -33,6 +35,8 @@ app.post('/api/signup', signUp);
 app.post('/api/signin', signIn);
 app.post('/forgetPassword', forgetPassword);
 app.post('/resetpasstoken/:id-:token', resetPassword);
+app.delete('/api/user/:id', deleteUser);
+app.delete('/api/user', deleteAllUsers);
 
 app.use('/api', healthRegister);
 app.use('/api', appointRoute);
