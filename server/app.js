@@ -14,6 +14,7 @@ import appointRoute from './routes/appointment';
 import feedRoute from './routes/feed';
 import deleteUser from './controllers/deleteUser';
 import deleteAllUsers from './controllers/deleteAllUser';
+import getAllUsers from './controllers/getAllUser';
 require('dotenv').config();
 
 const app = express();
@@ -35,6 +36,7 @@ app.post('/api/signup', signUp);
 app.post('/api/signin', signIn);
 app.post('/forgetPassword', forgetPassword);
 app.post('/resetpasstoken/:id-:token', resetPassword);
+app.get('/api/user', getAllUsers);
 app.delete('/api/user/:id', deleteUser);
 app.delete('/api/user', deleteAllUsers);
 
