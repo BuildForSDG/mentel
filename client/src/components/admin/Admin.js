@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import 'whatwg-fetch';
 
 import {
     MDBContainer,
@@ -39,10 +40,33 @@ export default class Admin extends Component {
     "white-text" = {
         color: "white"
     }
+    // constructor(props) {
+    // 	super(props)
+    // 	this.state = {
+    // 		list: []
+    // 	}
+    // }
+    componentDidMount() {
 
+        let currentComponent = this;
+
+        fetch('https://mentel-health.herokuapp.com/api/gethealth')
+            .then(function (response) {
+                return response.json()
+            }).then(function (json) {
+                const { getHealth } = json;
+                currentComponent.setState({ healthProfessionals: getHealth })
+            }).catch(function (err) {
+                console.log('failed', err)
+            })
+
+    }
 
     render() {
         const { collapseID } = this.state;
+
+        const healthP = this.state.healthProfessionals;
+
         return (
             <main>
                 <div className="row">
@@ -124,28 +148,39 @@ export default class Admin extends Component {
                                                         <MDBCardBody>
                                                             <MDBContainer>
                                                                 <h4 className="my-4">Health Professionals</h4>
-                                                                <MDBTable bordered striped>
-                                                                    <MDBTableHead>
-                                                                        <tr>
-                                                                            <th>#</th>
-                                                                            <th>Name</th>
-                                                                            <th>Health ID</th>
-                                                                            <th>Number</th>
-                                                                            <th>Action</th>
-                                                                        </tr>
-                                                                    </MDBTableHead>
-                                                                    <MDBTableBody>
-                                                                        <tr>
-                                                                            <td>1</td>
-                                                                            <td>Dr Sadiq</td>
-                                                                            <td>0123456</td>
-                                                                            <td>07038334703</td>
-                                                                            <td>
-                                                                                <MDBBtn color="danger">Delete</MDBBtn>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </MDBTableBody>
-                                                                </MDBTable>
+
+                                                                {healthP ?
+                                                                    <div className="table-responsive">
+                                                                        <MDBTable bordered striped>
+                                                                            <MDBTableHead>
+                                                                                <tr>
+                                                                                    <th>#</th>
+                                                                                    <th>Name</th>
+                                                                                    <th>Health ID</th>
+                                                                                    <th>Number</th>
+                                                                                    <th>Action</th>
+                                                                                </tr>
+                                                                            </MDBTableHead>
+                                                                            <MDBTableBody>
+                                                                                {healthP.map((obj, i) => {
+                                                                                    return <tr key={obj.id}>
+                                                                                        <td>{i + 1}</td>
+                                                                                        <td>{obj.firstName} {obj.lastName}</td>
+                                                                                        <td>{obj.medicalId}</td>
+                                                                                        <td>{obj.phoneNumber}</td>
+                                                                                        <td>
+                                                                                            <MDBBtn color="danger">Delete</MDBBtn>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                })}
+                                                                            </MDBTableBody>
+                                                                        </MDBTable>
+                                                                    </div>
+                                                                    :
+                                                                    <h6 className="text-muted">No Health Professionals Registered</h6>
+                                                                }
+
+
                                                             </MDBContainer>
                                                         </MDBCardBody>
                                                     </MDBCard>

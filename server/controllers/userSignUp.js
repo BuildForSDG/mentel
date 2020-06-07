@@ -34,6 +34,7 @@ const signUp = async (req, res) => {
     const token = jwt.sign({ clientData }, process.env.TOKEN_SECRET, {
       expiresIn: 86400, // 24 hours
     });
+    console.log('token', token);
     const data = {
       id: clientData.id,
       firstName: clientData.firstName,
