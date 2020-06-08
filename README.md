@@ -1,13 +1,26 @@
+# Team-017 | MENTEL
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6eab51d0292c43808209d6a27ee1bdcf)](https://app.codacy.com/gh/BuildForSDG/mentel?utm_source=github.com&utm_medium=referral&utm_content=BuildForSDG/mentel&utm_campaign=Badge_Grade_Settings)
 [![Codacy Badge](https://img.shields.io/badge/Code%20Quality-D-red)](https://img.shields.io/badge/Code%20Quality-D-red)
 
+## Table of Contents
+
+1. [About](#About)
+2. [Why](#Why)
+3. [Usage](#Usage)
+4. [Setup](#Setup)
+5. [Authors](#Authors)
+6. [Contributing](#Contributing)
+4. [License](#LICENCE)
 
 ## About
 
 This Project, Mentel, is part of the #BuidForSDG challenge, created by Team-017. 
+Mentel is an application solution, built to connect users - patients or passersby - with certified health professionals. The solution gives the benefit of convenience, confidentiality, and low cost to its users. The app is user friendly, easy to use and accommodates users with little or no tech experience.
 
 ## Why
+
+This App provides a solution that addresses the Sustainable Development [Goal (SDG) 3](https://sustainabledevelopment.un.org/sdg3): Ensure healthy lives and promote well-being for all at all ages, with focus on Problem 1 of #BuildForSDG.
 
 The Team decided to take on the problem of helping to find innovative ways that can link mental health specialists to your community, which is SDG Goal 3, Problem 1.
 
@@ -17,26 +30,49 @@ With this app, we aim to link mental health specialists to our communities while
 
 ## Usage
 
+To make use of the mental application platform, please signup via:
 
 ## Setup
 
 ``
 
 #### Hints
+##### Getting started
+
+To get the Node server running locally:
+
+- Clone this repo
+- `npm install` to install all required dependencies
+- `npm run dev` to start the local server
 
 ## Authors
+- [Sadiq A Sambo](https://github.com/saslamp) - TTL
+- [Chirchir Kibetchirchir](https://github.com/Kibetchirchir) - MENTOR
+- [AbonyiXavier](https://github.com/AbonyiXavier)
+- [Jimoh Rildwan Adekunle](https://github.com/neymarjimoh)
+- [Sylvester Agubata](https://github.com/silvertechhub)
+- [ieadeleke](https://github.com/ieadeleke)
+- [Oluwole Israel O.](https://github.com/whizyrel)
+- [olatundedatascience](https://github.com/olatundedatascience)
 
 
 ## Contributing
+
+[![contributions welcome][contributions-welcome]][issues-url]
+
 If this project sounds interesting to you and you'd like to contribute, thank you!
 First, you can send a mail to buildforsdg@andela.com to indicate your interest, why you'd like to support and what forms of support you can bring to the table, but here are areas we think we'd need the most help in this project :
 1.  area one (e.g this app is about human trafficking and you need feedback on your roadmap and feature list from the private sector / NGOs)
 2.  area two (e.g you want people to opt-in and try using your staging app at staging.project-name.com and report any bugs via a form)
 3.  area three (e.g here is the zoom link to our end-of sprint webinar, join and provide feedback as a stakeholder if you can)
 
-## Acknowledgements
-
-
 ## LICENSE
+
+[![License][badge-license]](http://badges.mit-license.org)
+
 MIT
 
+<!-- MARKDOWN LINKS & IMAGES -->
+[contributions-welcome]: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=for-the-badge
+[issues-url]: https://github.com/BuildForSDG/mentel/issues
+[badge-license]: https://img.shields.io/:license-mit-blue.svg?style=for-the-badge
