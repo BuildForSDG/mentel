@@ -5,6 +5,7 @@ import {
     MDBCard, MDBCardBody, MDBRow, MDBCol, MDBView, MDBMask, MDBTable, MDBTableBody, MDBTableHead, MDBModal, MDBModalBody,
     MDBModalHeader, MDBModalFooter
 } from "mdbreact";
+import { BrowserRouter as Router } from 'react-router-dom';
 import { MDBFileInput } from "mdbreact";
 
 export default class DashboardPage extends Component {

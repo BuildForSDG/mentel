@@ -11,6 +11,11 @@ import forgetPassword from './controllers/forgetPassword';
 import resetPassword from './controllers/resetPassword';
 import healthRegister from './routes/health';
 import appointRoute from './routes/appointment';
+import feedRoute from './routes/feed';
+import deleteUser from './controllers/deleteUser';
+import deleteAllUsers from './controllers/deleteAllUser';
+import getAllUsers from './controllers/getAllUser';
+require('dotenv').config();
 
 const app = express();
 
@@ -25,16 +30,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-require('dotenv').config();
 
 app.use('/uploads', express.static('uploads'));
 app.post('/api/signup', signUp);
 app.post('/api/signin', signIn);
 app.post('/forgetPassword', forgetPassword);
 app.post('/resetpasstoken/:id-:token', resetPassword);
+app.get('/api/user', getAllUsers);
+app.delete('/api/user/:id', deleteUser);
+app.delete('/api/user', deleteAllUsers);
 
 app.use('/api', healthRegister);
 app.use('/api', appointRoute);
+app.use('/api', feedRoute);
 
 app.get('/', (req, res) => {
   res.send('Welcome to Mentel API');

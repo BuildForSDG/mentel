@@ -39,6 +39,9 @@ module.exports = (sequelize, DataTypes) => {
     Client.hasOne(models.Profiles, {
       onDelete: 'cascade',
     });
+    Client.hasMany(models.Feeds, {
+      onDelete: 'cascade',
+    });
   };
 
   return Client;

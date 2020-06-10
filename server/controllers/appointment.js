@@ -17,6 +17,7 @@ export default {
         message: 'your appointment was successful',
       });
     } catch (error) {
+      // console.log(error);
       //   return res.status(500).send({ message: error.message });
     }
   },
@@ -54,6 +55,7 @@ export default {
           id: Appointments.dataValues.Healthprofessional,
         },
       });
+      /* eslint operator-linebreak: off */
       Appointments.dataValues.Healthprofessional =
         Healthprofessionals.dataValues;
       //   console.log('my object', Appointments.dataValues);
