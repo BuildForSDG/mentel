@@ -90,7 +90,7 @@ export default class DashboardPage extends Component {
                                     </h5>
 
                                     <div className="text-right">
-                                        <MDBBtn color="info" onClick={this.toggleFeedModal(6)}>Add Post</MDBBtn>
+                                        <MDBBtn color="info" onClick={() => { alert('This feature is under development')} }>Add Post</MDBBtn>
                                         <MDBModal isOpen={this.state.modal6} toggle={this.toggleFeedModal(6)} position="top-center">
                                             <MDBModalHeader toggle={this.toggleFeedModal(6)}>New Post</MDBModalHeader>
                                             <MDBModalBody>
@@ -273,7 +273,7 @@ export default class DashboardPage extends Component {
                         <MDBTabPane tabId="2" role="tabpanel">
 
                             <div className="text-right">
-                                <MDBBtn color="info">Request appointment</MDBBtn>
+                                <MDBBtn color="info" onClick={() => { alert('This feature is under development')} }>Request appointment</MDBBtn>
                             </div>
 
                             <MDBCard>

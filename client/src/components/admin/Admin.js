@@ -25,6 +25,9 @@ export default class Admin extends Component {
     state = {
         collapseID: 'collapse1',
         healthProfessionals: [],
+        users: [],
+        usersLength: 0,
+        healthLength: 0
     };
 
     toggleCollapse = collapseID => () =>
@@ -40,25 +43,35 @@ export default class Admin extends Component {
     "white-text" = {
         color: "white"
     }
-    // constructor(props) {
-    // 	super(props)
-    // 	this.state = {
-    // 		list: []
-    // 	}
-    // }
+
     componentDidMount() {
 
         let currentComponent = this;
 
+        // fetch health prfessionals
         fetch('https://mentel-health.herokuapp.com/api/gethealth')
             .then(function (response) {
                 return response.json()
             }).then(function (json) {
                 const { getHealth } = json;
                 currentComponent.setState({ healthProfessionals: getHealth })
+                currentComponent.setState({ healthLength: getHealth.length })
             }).catch(function (err) {
                 console.log('failed', err)
             })
+
+        // fetch users
+        fetch('https://mentel-health.herokuapp.com/api/user')
+            .then(function (response) {
+                return response.json()
+            }).then(function (json) {
+                const { data } = json;
+                currentComponent.setState({ users: data })
+                currentComponent.setState({ usersLength: data.length })
+            }).catch(function (err) {
+                console.log('failed', err)
+            })
+
 
     }
 
@@ -66,6 +79,7 @@ export default class Admin extends Component {
         const { collapseID } = this.state;
 
         const healthP = this.state.healthProfessionals;
+        const users = this.state.users;
 
         return (
             <main>
@@ -88,13 +102,13 @@ export default class Admin extends Component {
                                 <MDBCard className="card-body" style={{ width: "22rem", marginTop: "1rem" }}>
                                     <MDBCardTitle>Health Professionals</MDBCardTitle>
                                     <MDBCardText>
-                                        <h3>0</h3>
+                                        <h3>{this.state.healthLength}</h3>
                                     </MDBCardText>
                                 </MDBCard>
                                 <MDBCard className="card-body" style={{ width: "22rem", marginTop: "1rem" }}>
                                     <MDBCardTitle>Clients</MDBCardTitle>
                                     <MDBCardText>
-                                        <h3>0</h3>
+                                        <h3>{this.state.usersLength}</h3>
                                     </MDBCardText>
                                 </MDBCard>
                             </section>
@@ -112,37 +126,66 @@ export default class Admin extends Component {
                                     <MDBCollapse id='collapse1' isOpen={collapseID}>
                                         <MDBCardBody>
                                             <MDBRow>
-                                                <MDBCol md='6'>
+                                                <MDBCol md='12'>
                                                     <MDBCard testimonial>
                                                         <MDBCardUp className='indigo lighten-1' />
                                                         <MDBCardBody>
                                                             <MDBContainer>
                                                                 <h4 className="my-4">Clients</h4>
-                                                                <MDBTable bordered striped>
-                                                                    <MDBTableHead>
-                                                                        <tr>
-                                                                            <th>#</th>
-                                                                            <th>Name</th>
-                                                                            <th>Number</th>
-                                                                            <th>Actions</th>
-                                                                        </tr>
-                                                                    </MDBTableHead>
-                                                                    <MDBTableBody>
-                                                                        <tr>
-                                                                            <td>1</td>
-                                                                            <td>Jane Doe</td>
-                                                                            <td>07038334703</td>
-                                                                            <td>
-                                                                                <MDBBtn color="danger">Delete</MDBBtn>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </MDBTableBody>
-                                                                </MDBTable>
+                                                                {users ?
+                                                                    <div className="table-responsive">
+                                                                        <MDBTable bordered striped>
+                                                                            <MDBTableHead>
+                                                                                <tr>
+                                                                                    <th>#</th>
+                                                                                    <th>Name</th>
+                                                                                    <th>Email</th>
+                                                                                    <th>Number</th>
+                                                                                    <th>Address</th>
+                                                                                    <th>Action</th>
+                                                                                </tr>
+                                                                            </MDBTableHead>
+                                                                            <MDBTableBody>
+                                                                                {users.map((obj, i) => {
+                                                                                    return <tr key={obj.id}>
+                                                                                        <td>{i + 1}</td>
+                                                                                        <td>{obj.firstName} {obj.lastName}</td>
+                                                                                        <td>{obj.email}</td>
+                                                                                        <td>{obj.phoneNumber}</td>
+                                                                                        <td>{obj.address}</td>
+                                                                                        <td>
+                                                                                            <button className="btn btn-sm btn-danger">Delete</button>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                })}
+                                                                            </MDBTableBody>
+                                                                        </MDBTable>
+                                                                    </div>
+                                                                    :
+                                                                    <h6 className="text-muted">No Users Registered</h6>
+                                                                }
                                                             </MDBContainer>
                                                         </MDBCardBody>
                                                     </MDBCard>
                                                 </MDBCol>
-                                                <MDBCol md='6'>
+                                            </MDBRow>
+                                        </MDBCardBody>
+                                    </MDBCollapse>
+                                </MDBCard>
+
+                                <MDBCard style={{ backgroundColor: 'transparent' }}>
+                                    <MDBCollapseHeader
+                                        onClick={this.toggleCollapse('collapse2')}
+                                        className='text-uppercase warning-color lighten-3 z-depth-1'
+                                    >
+                                        <span className='white-text font-weight-bold'>
+                                            Health Professionals
+                                        </span>
+                                    </MDBCollapseHeader>
+                                    <MDBCollapse id='collapse2' isOpen={collapseID}>
+                                        <MDBCardBody>
+                                            <MDBRow className='my-4'>
+                                                <MDBCol md='12'>
                                                     <MDBCard testimonial>
                                                         <MDBCardUp gradient='aqua' />
                                                         <MDBCardBody>
@@ -181,58 +224,6 @@ export default class Admin extends Component {
                                                                 }
 
 
-                                                            </MDBContainer>
-                                                        </MDBCardBody>
-                                                    </MDBCard>
-                                                </MDBCol>
-                                            </MDBRow>
-                                        </MDBCardBody>
-                                    </MDBCollapse>
-                                </MDBCard>
-
-                                <MDBCard style={{ backgroundColor: 'transparent' }}>
-                                    <MDBCollapseHeader
-                                        onClick={this.toggleCollapse('collapse2')}
-                                        className='text-uppercase warning-color lighten-3 z-depth-1'
-                                    >
-                                        <span className='white-text font-weight-bold'>
-                                            Pending requests
-                                        </span>
-                                    </MDBCollapseHeader>
-                                    <MDBCollapse id='collapse2' isOpen={collapseID}>
-                                        <MDBCardBody>
-                                            <MDBRow className='my-4'>
-                                                <MDBCol md='12'>
-                                                    <MDBCard testimonial>
-                                                        <MDBCardUp gradient='aqua' />
-                                                        <MDBCardBody>
-                                                            <MDBContainer>
-                                                                <h4 className="my-4">Health Professionals</h4>
-                                                                <MDBTable bordered striped>
-                                                                    <MDBTableHead>
-                                                                        <tr>
-                                                                            <th>#</th>
-                                                                            <th>Name</th>
-                                                                            <th>Health ID</th>
-                                                                            <th>Email</th>
-                                                                            <th>Number</th>
-                                                                            <th>Action</th>
-                                                                        </tr>
-                                                                    </MDBTableHead>
-                                                                    <MDBTableBody>
-                                                                        <tr>
-                                                                            <td>1</td>
-                                                                            <td>Dr Sadiq</td>
-                                                                            <td>sadiq@example.com</td>
-                                                                            <td>0123456</td>
-                                                                            <td>07038334703</td>
-                                                                            <td>
-                                                                                <MDBBtn color="success">Approve</MDBBtn>
-                                                                                <MDBBtn color="danger">Reject</MDBBtn>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </MDBTableBody>
-                                                                </MDBTable>
                                                             </MDBContainer>
                                                         </MDBCardBody>
                                                     </MDBCard>

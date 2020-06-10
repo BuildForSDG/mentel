@@ -37,7 +37,7 @@ import FooterPage from "./FooterPage";
 
                         </div>
                     </div>
-                    <div style={{paddingBottom: "2vw"}}><button className="btn blue center-align">Get started</button></div>
+                    <div style={{paddingBottom: "2vw"}}><a href="/signup" className="btn blue white-text center-align">Get started</a></div>
 
                 </div>
                 <PatientsConnect />
